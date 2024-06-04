@@ -88,3 +88,7 @@ html, body, #viewDiv {
 .hidden {
     display: none;
 }
+
+.esri-popup {
+    z-index: 1000; /* Ensure it is above other elements */
+}

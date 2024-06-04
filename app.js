@@ -42,21 +42,12 @@ require([
     });
 
     // Create a view and set the map to it
-    var view;
-    if (isMobile) {
-        view = new MapView({
-            container: "viewDiv",
-            map: map,
-            extent: mobileExtent
-        });
-    } else {
-        view = new MapView({
-            container: "viewDiv",
-            map: map,
-            center: [-98.5795, 39.8283],
-            zoom: 5.5
-        });
-    }
+    var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-98.5795, 39.8283],
+        zoom: 5.5
+    });
 
     // Store the initial extent
     var initialExtent;
@@ -141,7 +132,26 @@ require([
         disclaimer.style.display = 'none';
     });
     
+    view.popup.dockOptions = {
+        buttonEnabled: false,
+        breakpoint: false
+      };
+
+      view.popup.collapseEnabled = false;
+      
+      view.on("click", function(event) {
+        view.hitTest(event).then(function(response) {
+          if (response.results.length) {
+            var graphic = response.results.filter(function (result) {
+              return result.graphic.layer === geojsonLayer;
+            })[0].graphic;
     
-
+            view.popup.open({
+              title: graphic.attributes.title, // Adjust based on your attributes
+              content: graphic.attributes.description, // Adjust based on your attributes
+              location: event.mapPoint
+            });
+          }
+        });
+      });
 });
-
