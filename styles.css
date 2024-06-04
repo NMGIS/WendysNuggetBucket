@@ -75,7 +75,7 @@ html, body, #viewDiv {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px; /* Adjust size as needed */
-    height: 200px; /* Adjust size as needed */
+    height: 250px; /* Adjust size as needed */
     background-color: rgb(255, 255, 255);
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -91,4 +91,10 @@ html, body, #viewDiv {
 
 .esri-popup {
     z-index: 1000; /* Ensure it is above other elements */
+}
+
+@media only screen and (max-width: 768px) {
+    #logoDiv {
+        display: none;
+    }
 }
