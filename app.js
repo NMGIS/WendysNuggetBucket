@@ -11,18 +11,6 @@ require([
     // Detect if the user is on a mobile device
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // Define the default extent for desktop
-    var desktopExtent = new Extent({
-        xmin: -140,
-        ymin: 20,
-        xmax: -50,
-        ymax: 50,
-        spatialReference: {
-            wkid: 4326
-        }
-    });
-
-    // Define the default extent for mobile
     var mobileExtent = new Extent({
         xmin: -125,
         ymin: 25,
@@ -33,21 +21,37 @@ require([
         }
     });
 
-    // Set the initial extent based on the device type
-    var initialExtent = isMobile ? mobileExtent : desktopExtent;
-
     // Create a map with a basemap
     var map = new Map({
         basemap: "osm"
     });
 
-    // Create a view and set the map to it
-    var view = new MapView({
-        container: "viewDiv",
-        map: map,
-        center: [-98.5795, 39.8283],
-        zoom: 5.5
-    });
+    var view;
+    if (isMobile) {
+        view = new MapView({
+            container: "viewDiv",
+            map: map,
+            extent: mobileExtent,
+            popup: {
+                dockEnabled: true,
+                dockOptions: {
+                    buttonEnabled: false, // Disable the dock button if you want
+                    breakpoint: false, // Disable the responsive behavior
+                    position: "top-center" // Dock the popup at the top center of the view
+                }
+            }
+        });
+    } else {
+        view = new MapView({
+            container: "viewDiv",
+            map: map,
+            center: [-98.5795, 39.8283],
+            zoom: 5.5,
+            popup: {
+                dockEnabled: false
+            }
+        });
+    }
 
     // Store the initial extent
     var initialExtent;
