@@ -1,0 +1,90 @@
+html, body, #viewDiv {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#viewDiv {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#filterDiv {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Change from left to right */
+    z-index: 99;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#logoDiv {
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
+    z-index: 100;
+}
+#logoDiv img {
+    width: 300px; /* Adjust the size as needed */
+    height: auto;
+}
+
+#infoIcon {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    z-index: 100;
+    background-color: white;
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    border-radius: 50%; /* Ensures it is a circle */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-align: center; /* Center the text horizontally */
+    line-height: 30px; /* Center the text vertically, should be equal to height */
+    font-size: 30px;
+}
+
+#disclaimer {
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    z-index: 100;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+#closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#disclaimer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 101;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
